@@ -15,9 +15,10 @@ rutracker.login({username: process.env.RT_LOGIN, password: process.env.RT_PASSW}
     })
     .catch(err => console.error(err));
 
-bot.command('ok', ctx => {
-    ctx.replyWithSticker('CAADAgAD_AADyxkPAAFY-7LhMUQGpgI')
+bot.command('start', ctx => {
+    ctx.replyWithSticker('CAADAgADOwEAAhZ8aAPWZAdpczcAAR8C')
         .catch(err => console.error(err));
+    ctx.reply('Arrived at your disposal, Commander! Type anything.')
 });
 bot.on('text', ctx => {
     console.log('@' + ctx.message.from.username + ': "' + ctx.message.text + '"');
