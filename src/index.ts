@@ -14,11 +14,13 @@ rutracker.login({username: process.env.RT_LOGIN, password: process.env.RT_PASSW}
         console.log('Authorized');
     })
     .catch(err => console.error(err));
-
 bot.command('start', ctx => {
     ctx.replyWithSticker('CAADAgADOwEAAhZ8aAPWZAdpczcAAR8C')
         .catch(err => console.error(err));
     ctx.reply('Arrived at your disposal, Commander! Type anything.')
+});
+bot.command('quit', ctx => {
+    ctx.reply('Just remove this chat. @BotFather doesn\'t allow me to interrupt session.')
 });
 bot.on('text', ctx => {
     console.log('@' + ctx.message.from.username + ': "' + ctx.message.text + '"');
@@ -45,6 +47,7 @@ bot.on('text', ctx => {
             state = torrents[0].state;
             seeds = torrents[0].seeds;
             response = title + ' (' + state + ') в категории "' + category + '", ' + seeds.toString() + ' seeds.';
+            console.log(response);
             ctx.reply(response)
                 .catch(err => console.error(err)
                 );
