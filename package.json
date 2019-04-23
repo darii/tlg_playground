@@ -1,7 +1,7 @@
 {
-  "name": "captcha_bot",
+  "name": "tlg_playground",
   "version": "1.0.0",
-  "description": "Telegram anti-spam bot",
+  "description": "A dummy Telegram bot written on TypeScript. Fetches Magnet links from torrent sites.",
   "main": "dist/index.js",
   "repository": "https://github.com/darii/tlg_playground",
   "author": "darii",
@@ -14,6 +14,7 @@
     "@types/dotenv": "^6.1.1",
     "@types/node": "^11.13.7",
     "dotenv": "^7.0.0",
+    "rutracker-api": "^1.1.0",
     "telegraf": "^3.29.0",
     "typescript": "^3.4.4"
   }
