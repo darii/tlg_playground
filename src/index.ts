@@ -21,7 +21,8 @@ bot.command('ok', ctx => {
 });
 bot.on('text', ctx => {
     console.log('@' + ctx.message.from.username + ': "' + ctx.message.text + '"');
-    let searchTerm: string = ctx.message.text.substring(8);
+    // let searchTerm: string = ctx.message.text.substring(8);
+    let searchTerm: string = ctx.message.text;
     let title: string;
     let torrentId: string;
     let category: string;
@@ -30,11 +31,13 @@ bot.on('text', ctx => {
     let response:string;
     rutracker.search({query: searchTerm, sort: 'seeds', order: 'desc'})
         .then(torrents => {
+            response = '===> Top-5 torrents:\n';
             torrents.forEach((item, index) => {
                 if (index < 5) {
-                    console.log(index + 1, item.title, item.seeds)
+                    response += `${index + 1}. ${item.title.split('(', 1)}. ${item.seeds} seeds.\n`
                 }
             });
+            console.log(response);
             torrentId = torrents[0].id;
             title = torrents[0].title;
             category = torrents[0].category;
