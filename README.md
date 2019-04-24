@@ -22,4 +22,3 @@ For Telegram API key, check https://github.com/Finalgalaxy/telegram-telegraf-bot
 - [RutrackerApi](https://github.com/nikityy/rutracker-api) (optional)
 
 
-[]: assets/
