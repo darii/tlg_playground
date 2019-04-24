@@ -14,5 +14,6 @@ LOG_LEVEL=3
 For Telegram API key, check https://github.com/Finalgalaxy/telegram-telegraf-bot and follow README instructions about how to create a Telegram Bot.
 
 ## Dependencies
-- Telegraf
-- RutrackerApi (optional)
+- [Telegraf](https://telegraf.js.org)
+- [thepiratebay](https://github.com/t3chnoboy/thepiratebay) 
+- [RutrackerApi](https://github.com/nikityy/rutracker-api) (optional)

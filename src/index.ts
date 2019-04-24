@@ -4,8 +4,8 @@ dotenv.config({path: `${__dirname}/../.env`});
 import {Telegraf, ContextMessageUpdate} from "telegraf";
 const RutrackerApi = require('rutracker-api');
 const telegraf = require('telegraf');
-const extra = require('telegraf/extra')
-const markup = extra.markdown()
+const extra = require('telegraf/extra');
+const markup = extra.markdown();
 const rutracker = new RutrackerApi();
 const bot: Telegraf<ContextMessageUpdate> = new telegraf(process.env.TOKEN);
 
@@ -18,9 +18,11 @@ bot.command('start', ctx => {
     ctx.replyWithSticker('CAADAgADOwEAAhZ8aAPWZAdpczcAAR8C')
         .catch(err => console.error(err));
     ctx.reply('Arrived at your disposal, Commander! Type anything.')
+        .catch(err => console.error(err));
 });
 bot.command('quit', ctx => {
     ctx.reply('Just remove this chat. @BotFather doesn\'t allow me to interrupt session.')
+        .catch(err => console.error(err));
 });
 bot.on('text', ctx => {
     console.log('@' + ctx.message.from.username + ': "' + ctx.message.text + '"');
@@ -31,6 +33,7 @@ bot.on('text', ctx => {
     let category: string;
     let state: string;
     let seeds: number;
+    let size: string;
     let response:string;
     rutracker.search({query: searchTerm, sort: 'seeds', order: 'desc'})
         .then(torrents => {
@@ -46,7 +49,8 @@ bot.on('text', ctx => {
             category = torrents[0].category;
             state = torrents[0].state;
             seeds = torrents[0].seeds;
-            response = title + ' (' + state + ') в категории "' + category + '", ' + seeds.toString() + ' seeds.';
+            size = torrents[0].size;
+            response = `${title} (${state}) в категории "${category}", ${seeds.toString()} seeds. ${size}.`;
             console.log(response);
             ctx.reply(response)
                 .catch(err => console.error(err)
@@ -59,7 +63,8 @@ bot.on('text', ctx => {
         })
         .catch(err => {
             console.log('Bad query, cannot find anything special :(');
-            ctx.replyWithSticker('CAADAgAD-gADyxkPAAFbFzf_Nf8KeQI');
+            ctx.replyWithSticker('CAADAgAD-gADyxkPAAFbFzf_Nf8KeQI')
+                .catch(err => console.error(err));
         });
 });
 
