@@ -1,6 +1,9 @@
 # tlg_playground
 **tlg_playground** is a small project for a telegram bot. The primary goal of its creation was a need to refresh my knowledge of TypeScript. Secondly, it serves fresh .magnet links over Telegram. Please use it for your own risk and also please don't neglect the copyright law. Running this bot can be possibly illegal in certain countries.
 
+## How It Works
+![tlg_playground in action](assets/tlg_playground.explained.png)
+
 ## Getting Started
 Create an `.env` file in the root of this project with the following info:
 
@@ -17,3 +20,6 @@ For Telegram API key, check https://github.com/Finalgalaxy/telegram-telegraf-bot
 - [Telegraf](https://telegraf.js.org)
 - [thepiratebay](https://github.com/t3chnoboy/thepiratebay) 
 - [RutrackerApi](https://github.com/nikityy/rutracker-api) (optional)
+
+
+[]: assets/

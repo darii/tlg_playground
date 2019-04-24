@@ -17,7 +17,7 @@ rutracker.login({username: process.env.RT_LOGIN, password: process.env.RT_PASSW}
 bot.command('start', ctx => {
     ctx.replyWithSticker('CAADAgADOwEAAhZ8aAPWZAdpczcAAR8C')
         .catch(err => console.error(err));
-    ctx.reply('Arrived at your disposal, Commander! Type anything.')
+    ctx.reply('Arrived at your disposal, Commander! Type anything. I\'ll do my best to fetch it.')
         .catch(err => console.error(err));
 });
 bot.command('quit', ctx => {
@@ -40,7 +40,7 @@ bot.on('text', ctx => {
             response = '===> Top-5 torrents:\n';
             torrents.forEach((item, index) => {
                 if (index < 5) {
-                    response += `${index + 1}. ${item.title.split('(', 1)}. ${item.seeds} seeds.\n`
+                    response += `${index + 1}. ${item.title}. ${item.seeds} seeds.\n`
                 }
             });
             console.log(response);
@@ -49,7 +49,7 @@ bot.on('text', ctx => {
             category = torrents[0].category;
             state = torrents[0].state;
             seeds = torrents[0].seeds;
-            size = torrents[0].size;
+            size = torrents[0].formattedSize;
             response = `${title} (${state}) в категории "${category}", ${seeds.toString()} seeds. ${size}.`;
             console.log(response);
             ctx.reply(response)
@@ -70,6 +70,7 @@ bot.on('text', ctx => {
 
 bot.on('sticker', ctx => {
     ctx.reply('👍')
+        .catch(err => console.error(err));
 });
 bot.startPolling();
 
